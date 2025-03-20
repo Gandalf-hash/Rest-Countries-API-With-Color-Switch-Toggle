@@ -6,7 +6,14 @@ export default {
     "./src/**/*.{js,jsx,ts,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      colors: {},
+      fontSize: {},
+      fontFamily: {
+        sans: [],
+        serif: [],
+      },
+    },
   },
   plugins: [],
 };
