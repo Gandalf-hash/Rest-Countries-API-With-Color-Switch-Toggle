@@ -3,24 +3,26 @@ import { IoMoon, IoSunny } from "react-icons/io5";
 import useDarkSide from "../hooks/useDarkSide";
 
 export const ColorSwitchToggle = () => {
-  const { colorTheme, setTheme } = useDarkSide();
-  const [darkSide, setDarkSide] = useState(
-    colorTheme === "dark" ? true : false
-  );
+  const { theme, setTheme } = useDarkSide();
+  const [isDarkSide, setIsDarkSide] = useState(theme === "dark" ? true : false);
 
-  const toggleDarkMode = () => {
-    const newMode = !darkSide;
-    setTheme(newMode ? "dark" : "light");
-    setDarkSide(newMode);
-  };
+  function toggleTheme() {
+    setTheme((prevTheme: string) => {
+      const newTheme = prevTheme === "light" ? "dark" : "light";
+
+      setIsDarkSide(prevTheme === "light" ? true : false);
+      localStorage.setItem("theme", newTheme);
+      return newTheme;
+    });
+  }
 
   return (
     <div className="element-switch-toggle flex flex-end">
       <button
-        onClick={toggleDarkMode}
+        onClick={toggleTheme}
         className="flex flex-row gap-2 items-center font-medium px-4 py-2"
       >
-        {darkSide ? (
+        {isDarkSide ? (
           <>
             <IoSunny />
             Light Mode
