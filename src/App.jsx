@@ -5,10 +5,10 @@ import { CountrySearch } from "./components/CountrySearch";
 
 function App() {
   return (
-    <div className="w-100vw h-screen bg-white dark:bg-darkBlue dark:text-white">
+    <div className="w-100vw h-screen bg-white dark:bg-deepBlue dark:text-white">
       <TopNavbar />
 
-      <div className="container px-4 lg:px-12 py-[2rem] lg:items-start">
+      <div className="container px-4 md:px-12 py-[2rem] md:items-start">
       <CountrySearch />
       </div>
     </div>

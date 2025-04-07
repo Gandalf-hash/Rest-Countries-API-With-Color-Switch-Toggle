@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { fetchData } from "../utils/fetchData";
 import { Country } from "../types/Country";
 import clsx from "clsx";
+import { GoSearch } from "react-icons/go";
 
 export const CountrySearch = () => {
   const [query, setQuery] = useState<string>("");
@@ -37,16 +38,19 @@ export const CountrySearch = () => {
 
   return (
     <div className="flex items-center justify-start mt-4 mb-4">
+      <GoSearch
+        className="absolute ml-[.4rem] text-gray-500 dark:text-white"
+        size={20}
+      />
       <input
+        className={clsx("md:w-[40%] w-full dark:bg-lightBlue dark:text-mediumWhite text-deepBlue bg-white")}
         id="search"
         type="text"
         placeholder="Type to search..."
+        autoComplete="off"
+        autoCorrect="off"
         value={query}
         onChange={handleSearch}
-        className={clsx(
-          "lg:w-[40%] w-full dark:bg-sky dark:text-white text-black text-sm p-2.5 border-sky",
-          "bg-white h-14"
-        )}
       />
     </div>
   );
