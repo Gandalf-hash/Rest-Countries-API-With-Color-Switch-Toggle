@@ -20,7 +20,7 @@ export const ColorSwitchToggle = () => {
     <div className="element-switch-toggle flex flex-end">
       <button
         onClick={toggleTheme}
-        className="flex flex-row gap-2 items-center font-medium px-4 py-2"
+        className="btn flex flex-row gap-2 items-center font-medium px-4 py-2"
       >
         {isDarkSide ? (
           <>

@@ -43,12 +43,15 @@ export const CountrySearch = () => {
         size={20}
       />
       <input
-        className={clsx("md:w-[40%] w-full dark:bg-lightBlue dark:text-mediumWhite text-deepBlue bg-white")}
+        className={clsx(
+          "md:w-[40%] w-full dark:bg-lightBlue dark:text-mediumWhite text-deepBlue bg-white"
+        )}
         id="search"
         type="text"
         placeholder="Type to search..."
         autoComplete="off"
         autoCorrect="off"
+        spellCheck="false"
         value={query}
         onChange={handleSearch}
       />
