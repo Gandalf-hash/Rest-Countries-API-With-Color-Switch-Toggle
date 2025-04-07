@@ -5,12 +5,12 @@ export default {
   theme: {
     extend: {
       colors: {
-        sky: "hsl(209, 23%, 22%)",
-        blue: "hsl(207, 26%, 17%)",
-        darkBlue: "hsl(200, 15%, 8%)",
-        gray: "hsl(0, 0%, 52%)",
-        lightGray: "hsl(0, 0%, 98%)",
         white: "hsl(0, 0%, 100%)",
+        mediumWhite: "hsl(0, 0%, 98%)",
+        blue: "hsl(207, 26%, 17%)",
+        lightBlue: "hsl(209, 23%, 22%)",
+        deepBlue: "hsl(200, 15%, 8%)",
+        grey: "hsl(0, 0%, 52%)",
       },
       fontSize: {
         homePageItems: "14px",
@@ -26,7 +26,9 @@ export default {
       },
       screen: {
         sm: "375px",
-        lg: "1440px",
+        md: "1440px",
+        lg: "1920px",
+        xl: "2560px",
       },
     },
   },

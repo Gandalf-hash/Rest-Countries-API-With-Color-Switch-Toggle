@@ -4,3 +4,74 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@tailwind screens;
+
+
+
+@layer base {
+  html {
+    font-size: 16px;
+  }
+
+  body {
+    font-family: 'Nunito Sans', sans-serif;
+    background-color: hsl(0, 0%, 98%);
+    color: hsl(0, 0%, 20%);
+    margin: 0;
+    padding: 0;
+    line-height: 1.5;
+    font-size: 1rem;
+    font-weight: 400;
+  }
+}
+@layer components {
+  .btn {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    font-weight: 500;
+    color: #fff;
+    background-color: hsl(0, 0%, 52%);
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .btn:hover {
+    background-color: hsl(0, 0%, 42%);
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+  }
+}
+
+input[type="text"] {
+  font-family: 'Nunito Sans', sans-serif;
+  font-size: 1.2rem;
+  padding: 1.8rem;
+  box-shadow: 0 0 5px hsl(0, 0%, 52%);
+  height: 3.5rem;
+  border: none;
+}
+
+
+input[type="text"]:focus {
+  outline: none;
+  box-shadow: 0 0 5px  hsl(0, 0%, 52%);
+}
+
+input[type="text"]::placeholder {
+  color: hsl(0, 0%, 52%);
+  font-size: 1rem;
+  font-weight: 400;
+  font-style: italic;
+}
+
+input[type="text"]:-webkit-autofill {
+  background-color: transparent !important;
+  -webkit-box-shadow: 0 0 0px 1000px transparent inset !important;
+  -webkit-text-fill-color: inherit !important;
+}
+
+input[type="text"]:hover {
+  box-shadow: 0 0 5px hsl(0, 0%, 52%);
+  cursor: text;
+}
