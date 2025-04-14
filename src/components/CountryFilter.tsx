@@ -12,7 +12,7 @@ export const CountryFilter = ({
   filteredCountries: Country[];
 }) => {
   return (
-    <div className="filter-container filtered__results w-full flex flex-col md:flex-row md:justify-end">
+    <div className="filter-container filtered__results w-1/2 flex flex-col md:flex-row  md:justify-end">
       <form action="">
         <label htmlFor="filter" className="sr-only">
           Filter by Region

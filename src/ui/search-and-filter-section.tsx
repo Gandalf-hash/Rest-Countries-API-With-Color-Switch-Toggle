@@ -14,7 +14,7 @@ function SearchAndFilterSection({
   filteredCountries: Country[];
 }) {
   return (
-    <div className="flex flex-col md:flex-row justify-between items-center mt-[4.5rem]">
+    <div className="flex flex-col md:flex-row justify-between items-start md:items-center mt-[4.5rem]">
       <CountrySearch />
       <CountryFilter filteredCountries={filteredCountries} />
     </div>
