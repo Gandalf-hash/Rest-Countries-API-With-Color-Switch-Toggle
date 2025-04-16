@@ -41,7 +41,7 @@ export const CountrySearch = () => {
         className="absolute ml-[.8rem] text-gray-500 dark:text-white"
         size={20}
       />
-      <label htmlFor="" className="sr-only">
+      <label htmlFor="search" className="sr-only">
         Search for a country
       </label>
       <input
