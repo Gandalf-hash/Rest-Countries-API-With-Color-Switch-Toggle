@@ -32,7 +32,10 @@ export const CountrySearch = () => {
   return (
     <div
       className={`search-bar search__query-${query} w-full md:w-1/2 flex items-center`}
-      data-testid="search-bar`}>"
+<div
+  className={`search-bar search__query-${query} w-full md:w-1/2 flex items-center`}
+  data-testid="search-bar"
+>
     >
       <GoSearch
         className="absolute ml-[.8rem] text-gray-500 dark:text-white"
