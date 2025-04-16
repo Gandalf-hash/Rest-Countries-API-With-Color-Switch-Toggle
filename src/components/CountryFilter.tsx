@@ -8,8 +8,10 @@ interface Country {
 
 export const CountryFilter = ({
   filteredCountries,
+  onRegionChange,
 }: {
   filteredCountries: Country[];
+  onRegionChange: (region: string) => void;
 }) => {
   return (
     <div className="filter-container filtered__results w-1/2 flex flex-col md:flex-row  md:justify-end">
@@ -24,6 +26,8 @@ export const CountryFilter = ({
             "w-full mt-[3.5rem] md:mt-0 bg-white dark:bg-lightBlue dark:text-mediumWhite text-deepBlue border",
             "border-gray-300 rounded-md"
           )}
+          onChange={(e) => onRegionChange(e.target.value)}
+          defaultValue=""
         >
           <option value="" disabled selected>
             Select a region
