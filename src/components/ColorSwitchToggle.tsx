@@ -17,10 +17,14 @@ export const ColorSwitchToggle = () => {
   }
 
   return (
-    <div className="element-switch-toggle flex flex-end">
+    <div className="element-switch-toggle flex justify-end">
       <button
         onClick={toggleTheme}
-        className="btn flex flex-row gap-2 items-center font-medium px-4 py-2"
+        className="btn flex flex-row gap-2 items-center font-medium px-4 py-2 dark:bg-lightBlue"
+        title="Toggle Dark Mode"
+        aria-label="Toggle Dark Mode"
+        aria-pressed={isDarkSide ? "true" : "false"}
+        aria-live="polite"
       >
         {isDarkSide ? (
           <>

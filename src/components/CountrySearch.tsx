@@ -1,54 +1,54 @@
 import React, { useEffect, useState } from "react";
-import { fetchData } from "../utils/fetchData";
-import { Country } from "../types/Country";
 import clsx from "clsx";
 import { GoSearch } from "react-icons/go";
 
+interface Country {
+  name: string;
+}
+
 export const CountrySearch = () => {
   const [query, setQuery] = useState<string>("");
+
+  type CountryContextType = {
+    countries: Country[];
+    setCountries: React.Dispatch<React.SetStateAction<Country[]>>;
+  };
+
   const [countries, setCountries] = useState<Country[]>([]);
-  const [filteredCountries, setFilteredCountries] = useState<Country[]>([]);
-
-  // Fetch data on component mount
-  useEffect(() => {
-    const getCountries = async () => {
-      try {
-        const data = await fetchData("/data.json");
-        setCountries(data);
-      } catch (error) {
-        console.error("Error fetching countries:", error);
-        throw error;
-      }
-    };
-
-    getCountries();
-  }, []);
 
   const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value.toLowerCase();
     setQuery(value);
 
     // Filter countries based on the query
-    const filtered = countries.filter((country) =>
+    const filtered = countries.filter((country: Country) =>
       country.name.toLowerCase().includes(value)
     );
 
-    setFilteredCountries(filtered);
+    // Optionally, you can log or use the filtered results
+    console.log(filtered);
   };
 
   return (
-    <div className="flex items-center justify-start mt-4 mb-4">
+    <div
+      className={`search-bar search__query-${query} w-full md:w-1/2 flex items-center`}
+      data-testid="search-bar"
+    >
       <GoSearch
-        className="absolute ml-[.4rem] text-gray-500 dark:text-white"
+        className="absolute ml-[.8rem] text-gray-500 dark:text-white"
         size={20}
       />
+      <label htmlFor="search" className="sr-only">
+        Search for a country
+      </label>
       <input
         className={clsx(
-          "md:w-[40%] w-full dark:bg-lightBlue dark:text-mediumWhite text-deepBlue bg-white"
+          " w-full dark:bg-lightBlue dark:text-mediumWhite text-deepBlue bg-white",
+          "dark:placeholder:text-mediumWhite placeholder:text-gray-500 placeholder:text-[1rem] placeholder:italic"
         )}
         id="search"
         type="text"
-        placeholder="Type to search..."
+        placeholder="Search for a country..."
         autoComplete="off"
         autoCorrect="off"
         spellCheck="false"

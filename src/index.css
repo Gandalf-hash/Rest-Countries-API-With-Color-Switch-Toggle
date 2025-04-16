@@ -41,37 +41,40 @@
     background-color: hsl(0, 0%, 42%);
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
   }
-}
 
-input[type="text"] {
-  font-family: 'Nunito Sans', sans-serif;
-  font-size: 1.2rem;
-  padding: 2.2rem;
-  box-shadow: 0 0 5px hsl(0, 0%, 52%);
-  height: 3.5rem;
-  border: none;
-}
+  input[type="text"] {
+    font-family: 'Nunito Sans', sans-serif;
+    font-size: 1.2rem;
+    padding: 20px 40px;
+    box-shadow: 0 0 5px hsl(0, 0%, 52%);
+    height: 3.5rem;
+    border: none;
+  }
+  
+  
+  input[type="text"]:focus, select:focus {
+    outline: none;
+    box-shadow: 0 0 5px  hsl(0, 0%, 52%);
+  }
+  
+  input[type="text"]:-webkit-autofill{
+    background-color: transparent !important;
+    -webkit-box-shadow: 0 0 0px 1000px transparent inset !important;
+    -webkit-text-fill-color: inherit !important;
+  }
+  
+  input[type="text"]:hover {
+    box-shadow: 0 0 5px hsl(0, 0%, 52%);
+    cursor: text;
+  }
 
-
-input[type="text"]:focus {
-  outline: none;
-  box-shadow: 0 0 5px  hsl(0, 0%, 52%);
-}
-
-input[type="text"]::placeholder {
-  color: hsl(0, 0%, 52%);
-  font-size: 1rem;
-  font-weight: 400;
-  font-style: italic;
-}
-
-input[type="text"]:-webkit-autofill {
-  background-color: transparent !important;
-  -webkit-box-shadow: 0 0 0px 1000px transparent inset !important;
-  -webkit-text-fill-color: inherit !important;
-}
-
-input[type="text"]:hover {
-  box-shadow: 0 0 5px hsl(0, 0%, 52%);
-  cursor: text;
+  select {
+    font-family: 'Nunito Sans', sans-serif;
+    font-size: 1.2rem;
+    padding: 16px 20px;
+    box-shadow: 0 0 5px hsl(0, 0%, 52%);
+    height: 3.5rem;
+    border: none;
+    background-color: white;
+  }
 }
