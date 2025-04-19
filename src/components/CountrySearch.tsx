@@ -4,12 +4,6 @@ import { GoSearch } from "react-icons/go";
 import { Country } from "../types/Country";
 export const CountrySearch = () => {
   const [query, setQuery] = useState<string>("");
-
-  type CountryContextType = {
-    countries: Country[];
-    setCountries: React.Dispatch<React.SetStateAction<Country[]>>;
-  };
-
   const [countries, setCountries] = useState<Country[]>([]);
 
   const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {

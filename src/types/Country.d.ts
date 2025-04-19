@@ -2,6 +2,7 @@
 export interface Country {
   name: string;
   population: number;
+  code: string;
   region: string;
   capital: string;
   flag: string;

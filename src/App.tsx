@@ -1,15 +1,15 @@
 import "./App.css";
 import TopNavbar from "./ui/top-navbar";
 import SearchAndFilterSection from "./ui/search-and-filter-section";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { fetchData } from "./utils/fetchData";
 import React from "react";
 import ContentsWrapper from "./components/ContentsWrapper";
-import { CountryContext, useCountryContext } from "./context/CountryContext";
+import { CountryContext } from "./context/CountryContext";
 
 function App() {
   const { countries, setCountries, selectedCountry, setSelectedCountry } =
-    useCountryContext();
+  useContext(CountryContext);
 
   // Fetch data on component mount
   useEffect(() => {
@@ -38,7 +38,7 @@ function App() {
             setSelectedCountry,
           }}
         >
-          <SearchAndFilterSection filteredCountries={countries} />
+          <SearchAndFilterSection />
         </CountryContext.Provider>
       </ContentsWrapper>
     </div>
