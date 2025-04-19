@@ -5,26 +5,11 @@ import { useEffect, useState } from "react";
 import { fetchData } from "./utils/fetchData";
 import React from "react";
 import ContentsWrapper from "./components/ContentsWrapper";
-
-// types
-type Country = {
-  name: string;
-  alpha2Code: string;
-  alpha3Code: string;
-  region: string;
-  subregion: string;
-  population: number;
-  area: number;
-  languages: Array<{ name: string }>;
-  currencies: Array<{ code: string; name: string; symbol: string }>;
-  flag: string;
-};
+import { CountryContext, useCountryContext } from "./context/CountryContext";
 
 function App() {
-  const [countries, setCountries] = useState<Country[]>([]);
-  const [filteredCountries, setFilteredCountries] = useState<Array<Country>>(
-    []
-  );
+  const { countries, setCountries, selectedCountry, setSelectedCountry } =
+    useCountryContext();
 
   // Fetch data on component mount
   useEffect(() => {
@@ -45,7 +30,16 @@ function App() {
     <div className="w-100vw h-screen bg-white dark:bg-deepBlue dark:text-white">
       <TopNavbar />
       <ContentsWrapper>
-        <SearchAndFilterSection filteredCountries={countries} />
+        <CountryContext.Provider
+          value={{
+            countries,
+            setCountries,
+            selectedCountry,
+            setSelectedCountry,
+          }}
+        >
+          <SearchAndFilterSection filteredCountries={countries} />
+        </CountryContext.Provider>
       </ContentsWrapper>
     </div>
   );

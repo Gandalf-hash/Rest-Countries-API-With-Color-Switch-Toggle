@@ -63,7 +63,7 @@
     -webkit-text-fill-color: inherit !important;
   }
   
-  input[type="text"]:hover {
+  input[type="text"]:hover, select {
     box-shadow: 0 0 5px hsl(0, 0%, 52%);
     cursor: text;
   }
@@ -71,10 +71,25 @@
   select {
     font-family: 'Nunito Sans', sans-serif;
     font-size: 1.2rem;
-    padding: 16px 20px;
+    padding: 16px 25px;
     box-shadow: 0 0 5px hsl(0, 0%, 52%);
     height: 3.5rem;
     border: none;
+    appearance: none;
     background-color: white;
+  }
+
+  form svg {
+    position: absolute;
+    top: 55%;
+    right: 3%;
+    transform: translateY(-50%);
+    pointer-events: none;
+  }
+  
+  form {
+    position: relative;
+    display: flex;
+    align-items: center;
   }
 }

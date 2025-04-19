@@ -16,7 +16,7 @@ function SearchAndFilterSection({
   return (
     <div className="flex flex-col md:flex-row justify-between items-start md:items-center mt-[4.5rem]">
       <CountrySearch />
-      <CountryFilter filteredCountries={filteredCountries} />
+      <CountryFilter />
     </div>
   );
 }
