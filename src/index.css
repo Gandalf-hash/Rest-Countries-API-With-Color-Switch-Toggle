@@ -63,9 +63,14 @@
     -webkit-text-fill-color: inherit !important;
   }
   
-  input[type="text"]:hover, select {
+  input[type="text"]:hover {
     box-shadow: 0 0 5px hsl(0, 0%, 52%);
     cursor: text;
+  }
+
+  select:hover {
+    box-shadow: 0 0 5px hsl(0, 0%, 52%);
+    cursor: pointer;
   }
 
   select {
