@@ -5,47 +5,58 @@ import { useEffect, useState } from "react";
 import { fetchData } from "./utils/fetchData";
 import React from "react";
 import ContentsWrapper from "./components/ContentsWrapper";
-
-// types
-type Country = {
-  name: string;
-  alpha2Code: string;
-  alpha3Code: string;
-  region: string;
-  subregion: string;
-  population: number;
-  area: number;
-  languages: Array<{ name: string }>;
-  currencies: Array<{ code: string; name: string; symbol: string }>;
-  flag: string;
-};
+import { CountryProvider, useCountryContext } from "./context/CountryContext";
+import CountryGrid from "./components/CountryGrid";
+import Loader from "./components/Loader";
 
 function App() {
-  const [countries, setCountries] = useState<Country[]>([]);
-  const [filteredCountries, setFilteredCountries] = useState<Array<Country>>(
-    []
+  return (
+    <CountryProvider>
+      <MainApp />
+    </CountryProvider>
   );
+}
+
+function MainApp() {
+  const { setCountries } = useCountryContext();
+  const [loading, setLoading] = useState(true);
 
   // Fetch data on component mount
   useEffect(() => {
     const getCountries = async () => {
       try {
         const data = await fetchData("/data.json");
-        setCountries(data);
+        if (!data) {
+          console.error("No data found");
+          setLoading(false);
+          return;
+        }
+        const transformedData = data.map((country) => ({
+          ...country,
+          flags: country.flags || { png: "", svg: "" },
+          alpha3Code: country.alpha3Code || country.code, 
+        }));
+        setCountries(transformedData);
       } catch (error) {
         console.error("Error fetching countries:", error);
-        throw error;
+      } finally {
+        setLoading(false);
       }
     };
 
     getCountries();
-  }, []);
+  }, [setCountries]);
+
+  if (loading) {
+    return <Loader />; 
+  }
 
   return (
-    <div className="w-100vw h-screen bg-white dark:bg-deepBlue dark:text-white">
+    <div className="w-100vw min-h-screen bg-white dark:bg-deepBlue dark:text-white">
       <TopNavbar />
       <ContentsWrapper>
-        <SearchAndFilterSection filteredCountries={countries} />
+        <SearchAndFilterSection />
+        <CountryGrid />
       </ContentsWrapper>
     </div>
   );
