@@ -11,8 +11,8 @@ export interface Country {
   capital: string;
   flag: string;
   subregion: string;
-  languages: string[];
-  currencies: string[];
+  languages: Record<string, string>;
+  currencies: Record<string, { name: string; symbol?: string }>;
   borders: string[];
   topLevelDomain: string[];
   nativeName: string;
