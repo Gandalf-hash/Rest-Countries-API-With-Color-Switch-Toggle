@@ -33,7 +33,7 @@ export const CountryFilter = ({}: {}) => {
           defaultValue=""
         >
           <option value="" disabled>
-            Select a region
+          Filter by Region
           </option>
           {["Africa", "Americas", "Asia", "Europe", "Oceania"].map((region) => (
             <option key={region} value={region}>
