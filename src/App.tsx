@@ -20,25 +20,39 @@ function App() {
 function MainApp() {
   const { setCountries } = useCountryContext();
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState("");
 
   // Fetch data on component mount
   useEffect(() => {
     const getCountries = async () => {
+      const controller = new AbortController();
+      const timeoutId = setTimeout(() => controller.abort(), 10000);
       try {
-        const data = await fetchData("/data.json");
+        const data = await fetchData("/data.json", {
+          signal: controller.signal,
+        });
+        clearTimeout(timeoutId);
+
         if (!data) {
           console.error("No data found");
           setLoading(false);
+          setError("No data found");
           return;
         }
         const transformedData = data.map((country) => ({
           ...country,
           flags: country.flags || { png: "", svg: "" },
-          alpha3Code: country.alpha3Code || country.code, 
+          alpha3Code: country.alpha3Code || country.code,
         }));
         setCountries(transformedData);
       } catch (error) {
-        console.error("Error fetching countries:", error);
+        if ((error as Error).name === "AbortError") {
+          console.error("Request timed out");
+          setError("Request timed out. Please try again later.");
+        } else {
+          console.error("Error fetching countries:", error);
+          setError("Failed to load countries. Please try again later.");
+        }
       } finally {
         setLoading(false);
       }
@@ -47,9 +61,10 @@ function MainApp() {
     getCountries();
   }, [setCountries]);
 
-  if (loading) {
-    return <Loader />; 
-  }
+  if (error)
+    return <div className="p-4 text-red-600 dark:text-red-400">{error}</div>;
+
+  if (loading) return <Loader />;
 
   return (
     <div className="w-100vw min-h-screen bg-white dark:bg-deepBlue dark:text-white">
