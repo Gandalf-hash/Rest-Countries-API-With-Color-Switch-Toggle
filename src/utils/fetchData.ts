@@ -1,8 +1,11 @@
 import { Country } from "../types/Country";
 
-export const fetchData = async (url: string): Promise<Country[]> => {
+export const fetchData = async (
+  url: string,
+  options?: RequestInit & { signal?: AbortSignal }
+): Promise<Country[]> => {
   try {
-    const response = await fetch(url);
+    const response = await fetch(url, options);
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);
     }

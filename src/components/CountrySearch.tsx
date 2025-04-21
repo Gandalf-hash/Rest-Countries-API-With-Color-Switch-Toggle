@@ -1,19 +1,9 @@
 import React, { useEffect, useState } from "react";
 import clsx from "clsx";
 import { GoSearch } from "react-icons/go";
-
-interface Country {
-  name: string;
-}
-
+import { Country } from "../types/Country";
 export const CountrySearch = () => {
   const [query, setQuery] = useState<string>("");
-
-  type CountryContextType = {
-    countries: Country[];
-    setCountries: React.Dispatch<React.SetStateAction<Country[]>>;
-  };
-
   const [countries, setCountries] = useState<Country[]>([]);
 
   const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -31,7 +21,7 @@ export const CountrySearch = () => {
 
   return (
     <div
-      className={`search-bar search__query-${query} w-full md:w-1/2 flex items-center`}
+      className={`search-bar search__query-${query} w-full md:w-1/2 xl:w-[30%] flex items-center`}
       data-testid="search-bar"
     >
       <GoSearch
