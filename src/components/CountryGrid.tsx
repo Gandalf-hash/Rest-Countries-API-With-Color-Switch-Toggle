@@ -67,7 +67,7 @@ export default function CountryGrid() {
           onClick={handlePreviousPage}
           disabled={currentPage === 1}
           className="px-4 py-2 bg-gray-300 dark:bg-gray-700 rounded-md mr-2"
-          aria-label="Previous Page"
+          aria-label="Go To The Previous Page"
         >
           Previous
         </button>
@@ -77,7 +77,7 @@ export default function CountryGrid() {
             currentPage === Math.ceil(countries.length / countriesPerPage)
           }
           className="px-4 py-2 bg-gray-300 dark:bg-gray-700 rounded-md"
-          aria-label="Next Page"
+          aria-label="Go To The Next Page"
         >
           Next
         </button>
